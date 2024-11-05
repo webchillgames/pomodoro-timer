@@ -5,4 +5,5 @@
     --main-color: rgb(200, 95, 49);
     --divider-color: rgb(202, 177, 129);
     --step: 8px;
+    --shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

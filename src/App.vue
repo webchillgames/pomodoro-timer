@@ -6,7 +6,6 @@
 
 <style lang="scss">
 @import '@/styles/variables.css';
-@import '@/styles/common.css';
 
 html,
 body,
@@ -26,5 +25,12 @@ body {
   max-width: 768px;
   margin: 0 auto;
   height: 100%;
+}
+
+.page {
+  height: 100%;
+  padding: calc(var(--step) * 2);
+  box-sizing: border-box;
+  background-color: var(--light-color);
 }
 </style>

@@ -10,8 +10,8 @@ export function generateBreakOptions(): number[] {
     .map((v, i) => (i + 1) * 5)
 }
 
-export function generateSectionsOptions(): number[] {
-  return Array(12)
+export function generateRepeatsOptions(): number[] {
+  return Array(3)
     .fill(null)
     .map((v, i) => i + 1)
 }
