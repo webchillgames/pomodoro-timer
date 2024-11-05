@@ -25,9 +25,34 @@ function startTimer() {
     timer.value = timer.value - 1
 
     if (timer.value === 0) {
-      stopTimer()
+      stop()
     }
-  }, 1000)
+  }, 10)
+}
+
+const activity = ref('work')
+
+function stop() {
+  stopTimer()
+
+  if (repeats.value === 1) {
+    return
+  }
+
+  if (activity.value === 'work') {
+    activity.value = 'chill'
+    timer.value = breakTime.value * 60
+    startTimer()
+    return
+  }
+
+  if (activity.value === 'chill') {
+    activity.value = 'work'
+    repeats.value = repeats.value - 1
+    timer.value = focusTime.value * 60
+    startTimer()
+    return
+  }
 }
 
 onUnmounted(stopTimer)
@@ -38,8 +63,8 @@ function stopTimer() {
 </script>
 
 <template>
-  <div class="home-view page">
-    <div class="wrapper home-view__wrapper">
+  <div class="home-view">
+    <div class="home-view__wrapper">
       <div class="home-view__title">
         <h1>Pomodoro timer</h1>
         <p>Stay productive</p>
@@ -52,7 +77,10 @@ function stopTimer() {
         @changeRepeats="e => (repeats = e)"
       />
 
-      <PomodoroTimer :timer="timer" />
+      <div>
+        <h2>Time to {{ activity }}</h2>
+        <PomodoroTimer :timer="timer" />
+      </div>
 
       <button
         type="button"
@@ -67,6 +95,16 @@ function stopTimer() {
 
 <style lang="scss">
 .home-view {
+  min-height: 100%;
+  padding: calc(var(--step) * 2);
+  box-sizing: border-box;
+  background-color: var(--light-color);
+
+  h2 {
+    text-align: center;
+    color: var(--main-color);
+  }
+
   a {
     text-align: center;
     text-decoration: none;
@@ -90,9 +128,13 @@ function stopTimer() {
   }
 
   &__wrapper {
+    max-width: 768px;
+    margin: 0 auto;
+    height: 100%;
     display: grid;
     grid-template-rows: repeat(4, max-content);
-    grid-gap: calc(var(--step) * 3);
+    grid-gap: calc(var(--step) * 5);
+    justify-content: center;
   }
 
   &__title {
@@ -113,7 +155,7 @@ function stopTimer() {
   }
 
   &__control {
-    width: 150px;
+    width: 300px;
     justify-self: center;
     border: none;
     color: #fff;

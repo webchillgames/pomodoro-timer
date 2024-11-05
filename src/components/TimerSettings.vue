@@ -137,11 +137,11 @@ function changeVisibleMenu(title: string) {
     background-color: var(--divider-color);
     border-radius: calc(var(--step) * 3);
     color: #fff;
-    margin: var(--step) 0;
     transition: all 0.2s;
     display: inline-block;
     vertical-align: center;
     box-shadow: var(--shadow);
+    max-width: 300px;
   }
 
   &__submenu {
@@ -191,6 +191,8 @@ function changeVisibleMenu(title: string) {
   @media (max-width: 768px) {
     ul {
       grid-template-columns: 1fr;
+      justify-content: center;
+      grid-gap: calc(var(--step) * 2);
     }
   }
 }
