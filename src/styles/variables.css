@@ -1,0 +1,8 @@
+:root {
+    --text-color: rgb(119, 137, 139);
+    --light-color: rgb(216, 205, 181);
+    --dark-color: rgb(133, 38, 20);
+    --main-color: rgb(200, 95, 49);
+    --divider-color: rgb(202, 177, 129);
+    --step: 8px;
+}

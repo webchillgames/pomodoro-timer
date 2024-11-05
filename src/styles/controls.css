@@ -1,0 +1,21 @@
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--step);
+
+    button,
+    a {
+        border: none;
+        color: #fff;
+        border-radius: calc(var(--step) * 2);
+        padding: var(--step);
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        background-color: var(--divider-color);
+
+        &:last-child {
+            background-color: var(--main-color);
+        }
+    }
+}
